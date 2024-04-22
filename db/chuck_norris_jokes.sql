@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 19, 2024 at 02:26 PM
+-- Generation Time: Apr 22, 2024 at 04:01 PM
 -- Server version: 10.4.18-MariaDB
 -- PHP Version: 8.0.3
 
@@ -56,8 +56,8 @@ INSERT INTO `categories` (`id`, `name`) VALUES
 
 CREATE TABLE `favorites` (
   `id` int(11) NOT NULL,
-  `user_id` int(11) NOT NULL,
-  `joke_id` int(11) NOT NULL
+  `user_id` varchar(255) NOT NULL,
+  `joke_id` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -100,9 +100,7 @@ ALTER TABLE `categories`
 -- Indexes for table `favorites`
 --
 ALTER TABLE `favorites`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `user_id` (`user_id`),
-  ADD KEY `joke_id` (`joke_id`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `jokes`
@@ -138,24 +136,17 @@ ALTER TABLE `favorites`
 -- AUTO_INCREMENT for table `jokes`
 --
 ALTER TABLE `jokes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- Constraints for dumped tables
 --
-
---
--- Constraints for table `favorites`
---
-ALTER TABLE `favorites`
-  ADD CONSTRAINT `favorites_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`),
-  ADD CONSTRAINT `favorites_ibfk_2` FOREIGN KEY (`joke_id`) REFERENCES `jokes` (`id`);
 
 --
 -- Constraints for table `jokes`
