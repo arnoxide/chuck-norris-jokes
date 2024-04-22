@@ -1,11 +1,10 @@
-
 <?php
 session_start();
 require_once 'api.php';
 
 if (isset($_SESSION['registration_success'])) {
     $registration_success = $_SESSION['registration_success'];
-    unset($_SESSION['registration_success']); 
+    unset($_SESSION['registration_success']);
 }
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -24,7 +23,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         // Verify password
         if (verifyPassword($password, $user['password'])) {
             $_SESSION['user_id'] = $user['id'];
-            header("Location: index.php"); 
+            header("Location: index.php");
             exit;
         } else {
             $error = "Invalid email or password";
